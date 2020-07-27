@@ -47,7 +47,7 @@ class App extends React.Component {
   bookTicket=(e)=> {
     this.setState({isLoading:true})
     e.preventDefault();
-    if(this.state.no_of_seats<=this.state.per_row & this.state.no_of_seats<this.state.number_of_seats_remained){
+    if(this.state.no_of_seats<=this.state.per_row & this.state.no_of_seats<=this.state.number_of_seats_remained){
       axios.get("https://train-seat-arrangements.herokuapp.com/book", {params: {seat: this.state.no_of_seats}})
       .then(res =>{
         this.setState({username:'',no_of_seats:'',seats_occupied:res.data[0],number_of_seats_remained:res.data[1]})
